@@ -1,0 +1,83 @@
+        SQL Queries:
+query" refers to any SQL statement that retrieves data from your database. 
+
+Top-Tip: In sqlite3, you can format the output of your select statements with a few helpful options:
+
+    .headers on      # output the name of each column
+    .mode column     # now we are in column mode, enabling us to run the next two .width commands
+    .width auto      # adjusts and normalizes column width
+    # or
+    .width NUM1, NUM2 # customize column width
+
+1. ORDER BY:
+    This modifier allows us to order the table rows returned by a certain SELECT statement.
+    Here's a boilerplate SELECT statement that uses ORDER BY:
+
+        SELECT column_name FROM table_name ORDER BY column_name ASC|DESC;
+
+        Example:
+
+            SELECT * FROM cats ORDER BY age;
+
+        When using ORDER BY, the default is to order in ascending order. If we want to specify though, we can use ASC for "ascending" or DESC for "descending."
+            Example:
+
+                SELECT * FROM cats ORDER BY age DESC; >>> Returns by descending order.
+
+2. LIMIT:
+    It is used to determine the number of records you want to return from a dataset.
+
+        SELECT * FROM cats ORDER BY age DESC LIMIT 1;
+            Setting a LIMIT of 1 returns just the first, i.e. oldest, cat on the list.
+        
+3. BETWEEN:
+    used to select data between a range.
+    Here's a boilerplate SELECT statement using BETWEEN:
+
+        SELECT column_name(s) FROM table_name WHERE column_name BETWEEN value1 AND value2;
+
+        Example:
+            SELECT name FROM cats WHERE age BETWEEN 1 AND 3;
+                (returns all the cats that are of the age between 1 and 3)
+
+
+4.NULL:
+    We can add data with missing values using the NULL keyword.
+    Example:
+        INSERT INTO cats (name, age, breed) VALUES (NULL, NULL, "Tabby");
+
+
+5. COUNT:
+    This is an SQL aggregate function.
+        SQL aggregate functions are SQL statements that operate on groups of records in our database rather than individual records:
+            we can retrieve minimum and maximum values from a column, sum values in a column, get the average of a column's values, or count a number of records that meet certain conditions.
+    
+    Here's a boilerplate SQL query using COUNT:
+
+        SELECT COUNT([column name]) FROM [table name] WHERE [column name] = [value]
+        
+        Example:
+            SELECT COUNT(owner_id) FROM cats WHERE owner_id = 1;
+
+
+6.GROUP BY:
+    It groups your results by a given column.
+    Example:
+        SELECT breed, COUNT(breed) FROM cats GROUP BY breed;
+
+    GROUP BY is a great function for aggregating results into different segments — you can even use it on multiple columns!
+        Example:
+
+
+Note on SELECT:
+    Prefferably use : SELECT cats.name FROM cats; to avoid errors when having too many tables.
+    
+        SELECT cats.name, dogs.name FROM cats, dogs;
+
+
+
+
+
+
+    
+
